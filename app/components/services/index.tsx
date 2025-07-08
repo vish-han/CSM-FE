@@ -45,7 +45,7 @@ export function Services(){
               transition={{ delay: 0.4, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              From analytics to automation, we've got all the tools you need to grow your business efficiently.
+              From analytics to automation, we have got all the tools you need to grow your business efficiently.
             </motion.p>
           </motion.div>
 

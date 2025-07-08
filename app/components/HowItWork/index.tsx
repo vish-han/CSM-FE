@@ -127,7 +127,7 @@ export function HowItWork(){
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-white font-medium">Good morning</span>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 text-white">
+                      <Button  className="bg-gradient-to-r from-purple-600 to-purple-700 text-white">
                         + New Project
                       </Button>
                     </motion.div>

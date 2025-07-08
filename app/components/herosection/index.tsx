@@ -60,7 +60,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          Analytics, automation, CRM, payments, marketing—it's all here. Ditch
+          Analytics, automation, CRM, payments, marketing—its all here. Ditch
           the fragmented tools and streamline your{" "}
           <span className="italic font-medium text-white underline decoration-purple-500/50 decoration-2 underline-offset-4">
             business operations
