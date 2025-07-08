@@ -24,7 +24,7 @@ export function Services(){
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              SERVICES & FEATURES
+              SERVICES / FEATURES
             </motion.p>
             <motion.h2
               className="text-4xl md:text-6xl font-black mb-8"
