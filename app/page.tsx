@@ -53,7 +53,7 @@ export default function LandingPage() {
 
   
      <NavBar/>
-     <MigrationBanner/>
+     {/* <MigrationBanner/> */}
      <SocialBanner/>
      <Hero/>
     <DashboardPreview/>  

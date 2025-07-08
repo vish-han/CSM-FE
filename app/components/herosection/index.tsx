@@ -9,104 +9,74 @@ export function Hero() {
     <section className="relative z-10 py-24">
       <div className="container mx-auto px-6 lg:px-12 text-center">
         <motion.h1
-          className="text-5xl md:text-7xl mb-8 leading-tight tracking-tight"
+          className="text-5xl md:text-7xl mb-8 leading-tight tracking-tight font-black"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
         >
-          <motion.span
-            className="font-black"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Build
-          </motion.span>{" "}
-          <motion.span
-            className="italic font-thin bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            business solutions
-          </motion.span>{" "}
-          <motion.span
-            className="font-black"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            for
-          </motion.span>
-          <br />
-          <motion.span
-            className="font-black"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 1,
-              duration: 0.6,
-              type: "spring",
-              stiffness: 100,
-            }}
-          >
-            your Products
-          </motion.span>
+          Transform customer support into customer success
         </motion.h1>
-
         <motion.p
-          className="text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          Analytics, automation, CRM, payments, marketing—its all here. Ditch
-          the fragmented tools and streamline your{" "}
+          The complete support management system for any organization. Streamline{" "}
           <span className="italic font-medium text-white underline decoration-purple-500/50 decoration-2 underline-offset-4">
-            business operations
+            ticket management
           </span>
           ,{" "}
           <span className="italic font-medium text-white underline decoration-purple-500/50 decoration-2 underline-offset-4">
-            workflow
+            auto-escalation
           </span>
           ,{" "}
           <span className="italic font-medium text-white underline decoration-purple-500/50 decoration-2 underline-offset-4">
-            customer management
+            role-based security
           </span>
           , and{" "}
           <span className="italic font-medium text-white underline decoration-purple-500/50 decoration-2 underline-offset-4">
-            sales pipeline
+            team collaboration
           </span>{" "}
-          using your favorite integrations.
+          in one powerful platform.
         </motion.p>
+
+        {/* Ship Fast Banner */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          <div className="backdrop-blur-sm bg-purple-500/10 border border-purple-500/20 rounded-2xl px-8 py-4 max-w-4xl mx-auto">
+            <p className="text-purple-300 font-semibold text-lg">
+              🚀 Ship fast, build fast, break fast, iterate fast • No worries about user requirements • Get real-time
+              feedback from users
+            </p>
+          </div>
+        </motion.div>
 
         <motion.div
           className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
+          transition={{ delay: 1.6, duration: 0.6 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-12 py-6 text-lg font-bold rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all"
             >
-              Start free trial
+              Start 14-day free trial
             </Button>
           </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
             <Button
               size="lg"
               variant="outline"
               className="border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-white/10 hover:border-gray-400 px-12 py-6 text-lg font-bold rounded-2xl bg-transparent backdrop-blur-sm transition-all"
             >
-              Is this right for me?
+              Schedule demo
             </Button>
           </motion.div>
         </motion.div>
@@ -116,24 +86,20 @@ export function Hero() {
           className="mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.6 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
         >
           <motion.p
             className="text-gray-500 mb-6 flex items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
+            transition={{ delay: 2, duration: 0.6 }}
           >
-            Integrate with nearly any tool or framework under the sun
-            <Link
-              href="#"
-              className="ml-4 text-gray-300 hover:text-white flex items-center transition-colors group"
-            >
-              <span className="font-semibold">View all</span>
+            Integrates with your existing tools and workflows
+            <Link href="#" className="ml-4 text-gray-300 hover:text-white flex items-center transition-colors group">
+              <span className="font-semibold">View all integrations</span>
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.p>
-
           <motion.div
             className="flex flex-wrap justify-center items-center gap-8"
             variants={staggerContainer}
