@@ -11,11 +11,11 @@ export function Services(){
       >
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-16"   
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: true }} 
           >
             <motion.p
               className="text-purple-400 font-semibold mb-4 tracking-wider uppercase"
