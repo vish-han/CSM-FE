@@ -56,27 +56,15 @@ export default function LandingPage() {
      <MigrationBanner/>
      <SocialBanner/>
      <Hero/>
-    <DashboardPreview/>
-     
+    <DashboardPreview/>  
      <ProblemSection/>
-
-     {/* Services/Features Section */}
-     <Services/>
- 
-      {/* Perfect For Section (ALL-IN-ONE BUSINESS STACK) */}
-      <Features/>
-      {/* How It Works Section */}
-     
+     <Services/> 
+      <Features/>  
      <HowItWork/>
-      {/* Testimonials Section */}
       <Testimonials/>
-
-      {/* FAQ Section */}
-     <FAQ/>
-
-      {/* Footer */}
-     
+     <FAQ/>   
     <Footer/>
+    
       <style jsx global>{`
       @keyframes scroll-left {
         0% {
