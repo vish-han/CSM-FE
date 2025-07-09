@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Eye, EyeOff, Headphones, ArrowLeft, Check } from "lucide-react"
@@ -18,21 +19,38 @@ export default function SignupPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [name, setName] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [acceptTerms, setAcceptTerms] = useState(false)
+    const [error, setError] = useState("")
+
+    const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if (password !== confirmPassword) {
-            alert("Passwords don't match!")
+            setError("Passwords don't match!")
             return
         }
+        if (!acceptTerms) {
+            setError("Please accept the terms and conditions")
+            return
+        }
+
         setIsLoading(true)
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 2000))
-        setIsLoading(false)
+        setError("")
+
+        try {
+            // Simulate API call
+            await new Promise((resolve) => setTimeout(resolve, 2000))
+            router.push("/login")
+        } catch (error: any) {
+            setError(error.message || "Signup failed")
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const passwordStrength = (password: string) => {
@@ -137,13 +155,52 @@ export default function SignupPage() {
                             <p className="text-gray-400">Start your 14-day free trial today</p>
                         </motion.div>
 
+                        {error && (
+                            <motion.div
+                                className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <p className="text-red-400 text-sm">{error}</p>
+                            </motion.div>
+                        )}
+
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Email Field */}
+                            {/* Name Field */}
                             <motion.div
                                 className="relative"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3, duration: 0.6 }}
+                            >
+                                <div className="relative">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className="w-full px-4 pt-6 pb-2 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-transparent focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all peer"
+                                        placeholder="Full name"
+                                        required
+                                    />
+                                    <label
+                                        htmlFor="name"
+                                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${name
+                                                ? "top-2 text-xs text-purple-400"
+                                                : "top-4 text-gray-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-purple-400"
+                                            }`}
+                                    >
+                                        Full name
+                                    </label>
+                                </div>
+                            </motion.div>
+
+                            {/* Email Field */}
+                            <motion.div
+                                className="relative"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.4, duration: 0.6 }}
                             >
                                 <div className="relative">
                                     <input
@@ -172,7 +229,7 @@ export default function SignupPage() {
                                 className="relative"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.4, duration: 0.6 }}
+                                transition={{ delay: 0.5, duration: 0.6 }}
                             >
                                 <div className="relative">
                                     <input
@@ -235,7 +292,7 @@ export default function SignupPage() {
                                 className="relative"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.5, duration: 0.6 }}
+                                transition={{ delay: 0.6, duration: 0.6 }}
                             >
                                 <div className="relative">
                                     <input
@@ -291,7 +348,7 @@ export default function SignupPage() {
                                 className="flex items-start space-x-3"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6, duration: 0.6 }}
+                                transition={{ delay: 0.7, duration: 0.6 }}
                             >
                                 <motion.button
                                     type="button"
@@ -319,7 +376,7 @@ export default function SignupPage() {
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7, duration: 0.6 }}
+                                transition={{ delay: 0.8, duration: 0.6 }}
                             >
                                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                     <Button
@@ -346,7 +403,7 @@ export default function SignupPage() {
                             className="text-center mt-8 pt-6 border-t border-white/10"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8, duration: 0.6 }}
+                            transition={{ delay: 0.9, duration: 0.6 }}
                         >
                             <p className="text-gray-400">
                                 Already have an account?{" "}
@@ -362,7 +419,7 @@ export default function SignupPage() {
                         className="text-center mt-8"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.9, duration: 0.6 }}
+                        transition={{ delay: 1.0, duration: 0.6 }}
                     >
                         <div className="backdrop-blur-sm bg-purple-500/10 border border-purple-500/20 rounded-2xl px-6 py-4">
                             <p className="text-purple-300 font-semibold text-sm">

@@ -2,11 +2,13 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Eye, EyeOff, Headphones, ArrowLeft } from "lucide-react"
 import { motion } from "framer-motion"
+import { useAuthStore } from "@/stores/auth-store"
 
 const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -18,14 +20,49 @@ export default function LoginPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+
+    const { login, isLoading, error, clearError, isLoggedIn, user, initAuth } = useAuthStore()
+    const router = useRouter()
+
+    // Initialize auth and redirect if already logged in
+    useEffect(() => {
+        initAuth()
+    }, [initAuth])
+
+    useEffect(() => {
+        if (isLoggedIn && user) {
+            // Redirect based on user role
+            switch (user.role) {
+                case "admin":
+                    router.push("/dashboard/admin")
+                    break
+                case "mod":
+                    router.push("/dashboard/mod")
+                    break
+                default:
+                    router.push("/dashboard")
+            }
+        }
+    }, [isLoggedIn, user, router])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        setIsLoading(true)
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 2000))
-        setIsLoading(false)
+        clearError()
+
+        try {
+            await login(email, password)  
+        } catch (error) {
+            console.error("Login failed:", error)
+        }
+    }
+
+    // Show loading if checking auth status
+    if (isLoggedIn) {
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-500"></div>
+            </div>
+        )
     }
 
     return (
@@ -106,6 +143,16 @@ export default function LoginPage() {
                             <h1 className="text-3xl font-bold mb-2">Welcome back</h1>
                             <p className="text-gray-400">Sign in to your SupportHub Pro account</p>
                         </motion.div>
+
+                        {error && (
+                            <motion.div
+                                className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <p className="text-red-400 text-sm">{error}</p>
+                            </motion.div>
+                        )}
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Email Field */}
